@@ -37,7 +37,7 @@ int main()
 
 	std::wstring map;
 	map += L"################";
-	map += L"#..............#";
+	map += L"#..............!";
 	map += L"#..............#";
 	map += L"#########......#";
 	map += L"#..............#";
@@ -90,7 +90,6 @@ int main()
 				fPlayerY += cosf(fPlayerA) * 5.f * felapsedTime;
 			}
 		}
-
 		for (int x = 0; x < SceenWidth; ++x) {
 			float fRayAngle = (fPlayerA - fFOV / 2.0f) + ((float)x / (float)SceenWidth) * fFOV;
 
@@ -101,11 +100,11 @@ int main()
 
 			bool HitWall = false;
 			bool Boundary = false;
+
 			while (!HitWall && fDistanceToWall < Depth) {
 				fDistanceToWall += 0.1f;
 				int TestX = (int)(fPlayerX + EyeX * fDistanceToWall);
 				int TestY = (int)(fPlayerY + EyeY * fDistanceToWall);
-
 				if (TestX < 0 || TestX >= MapWidth || TestY < 0 || TestY >= MapHeight) {
 					HitWall = true;
 					fDistanceToWall = Depth;
