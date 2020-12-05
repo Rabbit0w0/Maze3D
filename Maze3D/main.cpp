@@ -136,10 +136,10 @@ int main()
 
 				}
 			}
-
+			
 			int Ceiling = (float)(SceenHeight / 2.0) - SceenHeight / fDistanceToWall;
 			int Floor = SceenHeight - Ceiling;
-
+			//Tile renderer
 			short Shade = ' ';
 			short Shade2 = ' ';
 			if (fDistanceToWall <= Depth / 4.0f) {
@@ -158,7 +158,7 @@ int main()
 				Shade = ' ';
 
 			if (Boundary)Shade = ' ';
-
+			// Shader renderer
 			for (int y = 0; y < SceenHeight; ++y) {
 
 				if (y < Ceiling)
@@ -182,8 +182,10 @@ int main()
 						Shade2 = '_';
 					}
 					else Shade2 = ' ';
-					//screen[y * SceenWidth + x] = Shade2;
-					screen[y * SceenWidth + x] = ' ';
+					// Shader (WIP, Maybe unreal)
+					screen[y * SceenWidth + x] = Shade2;
+					// Disable shader
+					//screen[y * SceenWidth + x] = ' ';
 				}
 			}
 		}
@@ -197,9 +199,7 @@ int main()
 
 		screen[((int)fPlayerY + 1) * SceenWidth + (int)fPlayerX] = 'M';
 		screen[SceenWidth * SceenHeight - 1] = '\0';
+		// Display the result
 		WriteConsoleOutputCharacter(hConsole, screen, SceenWidth * SceenHeight, { 0,0 }, &dwBytesWritten);
-
 	}
-
-
 }
